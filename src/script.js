@@ -1,13 +1,26 @@
+function validate() {     // Funcion del boton de validate //
+  const result = document.getElementById ("result");
+      const valid = isValid(document.getElementById("inputNumero").value)
+      if (valid) { 
+        result.innerHTML = "Tarjeta Valida"
+        // Show success in div#result
+      }
+      else { 
+        result.innerHTML = "Tarjeta invalida"
+        // Show error message in div#result
+      }
+
+    }
+
 function isValid(creditCardNumber) {
   let procesado = creditCardNumber.trim()  // > "Numero"
   if (procesado.length == 0) {
     return false
 
   }
-  let arrayNumeroTarjeta = procesado.split("")   // Array para revertir. 
+  let arrayNumeroTarjeta = procesado.split("")   // Array dividir los arrays. 
 
-
-  let nuevoArrayInvertido = arrayNumeroTarjeta.reverse();
+  let nuevoArrayInvertido = arrayNumeroTarjeta.reverse();   // 
 
   let arrayPar = nuevoArrayInvertido.filter(function (x, y) {
     if (y % 2 === 1) return x;
@@ -50,18 +63,20 @@ function isValid(creditCardNumber) {
     return false;
   }
 
-  function valideKey(evt){
-			
-    // code is the decimal ASCII representation of the pressed key.
-    let code = (evt.which) ? evt.which : evt.keyCode;
-    console.log(code);
-    
-    if(code==8) { // backspace.
-      return true;
-    } else if(code>=48 && code<=57) { // is a number.
-      return true;
-    } else{ // other keys.
-      return false;
-    }
+ 
 }
+
+function valideKey(evt){
+			
+  // code is the decimal ASCII representation of the pressed key.
+  let code = (evt.which) ? evt.which : evt.keyCode;
+  console.log(code);
+  
+  if(code==8) { // backspace.
+    return true;
+  } else if(code>=48 && code<=57) { // is a number.
+    return true;
+  } else{ // other keys.
+    return false;
+  }
 }
